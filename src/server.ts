@@ -7,7 +7,7 @@ import userController from './controllers/userController';
 import sequelize from './config/database';
 
 const app = express();
-const port = 3030;
+const port = 3000;
 
 // Middleware para processar dados do formulário
 app.use(bodyParser.urlencoded({ extended: false }));
