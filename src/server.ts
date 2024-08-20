@@ -7,7 +7,7 @@ import userController from './controllers/userController';
 import sequelize from './config/database';
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
 // Middleware para processar dados do formulário
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,7 +17,7 @@ app.use(session({
   secret: 'secret-key', // Troque por uma chave secreta real
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }, // Sessão expira após 1 minuto de inatividade
+  cookie: { maxAge: 60000 },
 }));
 
 // Rotas de autenticação
