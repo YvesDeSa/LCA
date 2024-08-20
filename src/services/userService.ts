@@ -15,6 +15,10 @@ class UserService {
     }
     return null;
   }
+
+  async findUserByUsername(username: string): Promise<User | null> {
+    return await userRepository.findUserByUsername(username);
+  }
 }
 
 export default new UserService();
