@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import userService from '../services/userService';
 import path from 'path';
 
 class UserController {
   async loginPage(req: Request, res: Response): Promise<void> {
-    res.sendFile(path.join(__dirname, '../public/login.html'));
+    res.render('login'); 
   }
 
   async login(req: Request, res: Response): Promise<void> {
@@ -13,27 +13,14 @@ class UserController {
     if (user) {
       if (req.session) {
         req.session.userId = user.id;
-        req.session.role = user.role; // Armazenar o papel do usuário na sessão
-        res.redirect('/index.html');
+        req.session.role = user.role;
+        req.session.userName = user.username;
+        res.redirect('/index');
       } else {
-        res.status(500).send('Sessão não iniciada corretamente');
+        res.status(500).send('Erro ao iniciar sessão.');
       }
     } else {
-      res.send('Login falhou');
-    }
-  }
-
-  async register(req: Request, res: Response): Promise<void> {
-    const { username, password, role } = req.body;
-    try {
-      if (req.session && req.session.role === 'admin') {
-        await userService.register(username, password, role);
-        res.send('Usuário registrado com sucesso');
-      } else {
-        res.status(403).send('Acesso negado. Apenas administradores podem registrar novos usuários.');
-      }
-    } catch (error) {
-      res.status(500).send('Erro ao registrar usuário');
+      res.status(401).send('Login falhou. Verifique suas credenciais.');
     }
   }
 
@@ -43,30 +30,23 @@ class UserController {
         if (err) {
           res.status(500).send('Erro ao fazer logout');
         } else {
-          res.redirect('/login.html');
+          res.redirect('/login');
         }
       });
     } else {
-      res.redirect('/login.html');
+      res.redirect('/login');
     }
   }
 
-  isAuthenticated(req: Request, res: Response, next: NextFunction): void {
-    if (req.session && req.session.userId) {
-      return next();
+  async indexPage(req: Request, res: Response): Promise<void> {
+    if (req.session) {
+      res.render('index', {
+        userName: req.session.userName,
+        userId: req.session.userId,
+      });
+    } else {
+      res.redirect('/login');
     }
-    res.redirect('/login.html');
-  }
-
-  isAdmin(req: Request, res: Response, next: NextFunction): void {
-    if (req.session && req.session.role === 'admin') {
-      return next();
-    }
-    res.status(403).send('Acesso negado. Apenas administradores podem acessar esta página.');
-  }
-
-  async registrationPage(req: Request, res: Response): Promise<void> {
-    res.sendFile(path.join(__dirname, '../public/register.html'));
   }
 }
 

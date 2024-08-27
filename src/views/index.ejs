@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fases do Processo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      width: 90vw;
+      padding: 0 5vw;
+      color: white;
+      position: absolute;
+      top: 0;
+      height: 10vh;
+    }
+    .navbar .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .navbar .user-greeting {
+      font-size: 1.2em;
+    }
+    .navbar .logout-btn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+    }
+    .navbar .logout-btn i {
+      margin-right: 5px;
+    }
+    .navbar span {
+        color: #333;
+    }
+
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: scale(0.95); 
+      pointer-events: none;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0 0 15px rgba(0,0,0, 0.5);
+      width: 20vw;
+      height: 25vh;
+      text-align: center;
+      transition: transform 0.3s;
+      display: flex;
+      justify-content: center; 
+      align-items: center;     
+      flex-direction: column; 
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-buttons {
+      display: flex;
+      justify-content: space-between; /* Distribui o espaço */
+      width: 90%;
+      margin-top: 15px;
+    }
+
+    .card-buttons a {
+      width: 50%; /* Cada botão ocupa 40% */
+      padding: 12px 0; /* Espaçamento interno */
+      background-color: #f8f8f8;
+      border: 1px solid #d8d8d8;
+      color: #444;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center; /* Centraliza o texto */
+      transition: background-color 0.3s;
+    }
+    .card-buttons a:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+  
+      .card-buttons a:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+    .card-buttons a:hover {
+      background-color: #d8d8d8;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    a p {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .btn-voltar-container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .btn-voltar {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-voltar i {
+      font-size: 1.5em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="user-greeting">
+      <span><i class="fas far fa-user"></i> <%= userName %></span>
+    </div>
+    <div class="logo"><span>EcoLifeData</span></div>
+    <form action="/logout" method="POST" style="margin: 0;">
+      <button type="submit" class="logout-btn">
+        <span><i class="fas fa-sign-out-alt"></i></span>
+      </button>
+    </form>
+  </div>
+
+  <div class="main-content" id="fase-inicial">
+      <a href="#" class="card" onclick="mostrarSubFases()">
+        <h2>A1</h2>
+        <p>FASE DE EXTRAÇÃO DE ROCHA</p>
+      </a>
+     
+      <a href="transporte.html" class="card">
+        <h2>A2</h2>
+        <p>FASE DE TRANSPORTE</p>
+      </a>
+
+      <a href="industria.html" class="card">
+        <h2>A3</h2>
+        <p>FASE DE INDÚSTRIA</p>
+      </a>
+  </div>
+
+  <div class="main-content hidden" id="sub-fases">
+      <div class="card">
+        <p>EXTRAÇÃO EM BANCADA E CORTE EM BLOCOS</p>
+        <div class="card-buttons">
+          <a href="/entradas/extracao-bancada">Entradas</a>
+          <a href="/saidas/extracao-bancada">Saídas</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>TRATAMENTO DE RESÍDUOS DE LAMA</p>
+        <div class="card-buttons">
+          <a href="/entradas/tratamento-lama">Entradas</a>
+          <a href="/saidas/tratamento-lama">Saídas</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>TECNOLOGIA UTILIZADA</p>
+        <div class="card-buttons">
+          <a href="/entradas/tecnologia-utilizada">Entradas</a>
+          <a href="/saidas/tecnologia-utilizada">Saídas</a>
+        </div>
+      </div>
+  </div>
+
+  <div class="btn-voltar-container" id="btn-voltar-container">
+      <button class="btn-voltar" id="btn-voltar" onclick="voltarFases()">
+        <i class="fas fa-arrow-left"></i>
+        Voltar
+      </button>
+  </div>
+
+  <script>
+    function mostrarSubFases() {
+      const faseInicial = document.getElementById('fase-inicial');
+      const subFases = document.getElementById('sub-fases');
+      const btnVoltarContainer = document.getElementById('btn-voltar-container');
+
+      faseInicial.classList.add('hidden');
+      setTimeout(() => {
+        faseInicial.style.display = 'none';
+        subFases.style.display = 'flex';
+        setTimeout(() => {
+          subFases.classList.remove('hidden'); 
+        }, 50);
+        btnVoltarContainer.style.display = 'flex';
+      }, 500); 
+    }
+
+    function voltarFases() {
+      const faseInicial = document.getElementById('fase-inicial');
+      const subFases = document.getElementById('sub-fases');
+      const btnVoltarContainer = document.getElementById('btn-voltar-container');
+
+      subFases.classList.add('hidden');
+      setTimeout(() => {
+        subFases.style.display = 'none';
+        faseInicial.style.display = 'flex';
+        setTimeout(() => {
+          faseInicial.classList.remove('hidden');
+        }, 50); 
+        btnVoltarContainer.style.display = 'none'; 
+      }, 500); 
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
