@@ -1,10 +1,12 @@
 import { Router } from 'express';
-import RegularRockController from '../controllers/regularRockController';
+import RegularBlockController from '../controllers/regularRockController';
 
 const router = Router();
 
-router.post('/regularRock', RegularRockController.add);
-router.get('/regularRock', RegularRockController.getAll);
-router.get('/regularRock/:id', RegularRockController.getById);
+router.post('/regularBlock', RegularBlockController.add);
+router.get('/regularBlock', RegularBlockController.getAll);
+router.get('/regularBlock/:id', RegularBlockController.getById);
+router.put('/regularBlock/:id/edit', RegularBlockController.update);
+router.post('/regularBlock/:id/delete', RegularBlockController.delete);
 
 export default router;
