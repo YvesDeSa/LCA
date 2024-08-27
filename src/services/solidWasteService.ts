@@ -1,7 +1,7 @@
 import SolidWasteRepository from '../repositories/solidWasteRepository';
 
 class SolidWasteService {
-  async add(data: { type: string; quantity: number; disposal: string }) {
+  async add(data: { type: string; total_quantity: number; disposition: string }) {
     return await SolidWasteRepository.create(data);
   }
 
@@ -11,6 +11,14 @@ class SolidWasteService {
 
   async getById(id: number) {
     return await SolidWasteRepository.findById(id);
+  }
+
+  async update(id: number, data: Partial<{ type: string; total_quantity: number; disposition: string }>) {
+    return await SolidWasteRepository.update(id, data);
+  }
+
+  async delete(id: number) {
+    return await SolidWasteRepository.delete(id);
   }
 }
 

@@ -4,8 +4,8 @@ import sequelize from '../config/database';
 interface SolidWasteAttributes {
   id: number;
   type: string;
-  quantity: number;
-  disposal: string;
+  total_quantity: number;
+  disposition: string;
 }
 
 interface SolidWasteCreationAttributes extends Optional<SolidWasteAttributes, 'id'> {}
@@ -13,8 +13,8 @@ interface SolidWasteCreationAttributes extends Optional<SolidWasteAttributes, 'i
 class SolidWaste extends Model<SolidWasteAttributes, SolidWasteCreationAttributes> implements SolidWasteAttributes {
   public id!: number;
   public type!: string;
-  public quantity!: number;
-  public disposal!: string;
+  public total_quantity!: number;
+  public disposition!: string;
 }
 
 SolidWaste.init({
@@ -27,11 +27,11 @@ SolidWaste.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  quantity: {
+  total_quantity: {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
-  disposal: {
+  disposition: {
     type: DataTypes.STRING,
     allowNull: false,
   },
