@@ -4,7 +4,7 @@ import sequelize from '../config/database';
 interface CoProductAttributes {
   id: number;
   type: string;
-  quantity: number;
+  total_quantity: number;
   economic_value: number;
 }
 
@@ -13,7 +13,7 @@ interface CoProductCreationAttributes extends Optional<CoProductAttributes, 'id'
 class CoProduct extends Model<CoProductAttributes, CoProductCreationAttributes> implements CoProductAttributes {
   public id!: number;
   public type!: string;
-  public quantity!: number;
+  public total_quantity!: number;
   public economic_value!: number;
 }
 
@@ -27,7 +27,7 @@ CoProduct.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  quantity: {
+  total_quantity: {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
