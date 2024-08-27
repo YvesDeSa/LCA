@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Rocks</title>
+  <title>Manage Items</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -24,599 +24,386 @@
   <!-- Main Container -->
   <div class="container-fluid my-0">
     <div class="row">
-       <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <div class="list-group">
-      <!-- FASE DE EXTRAÇÃO DE ROCHA -->
-      <div class="list-group-item" onclick="toggleSubmenu('rock-extraction', this)">
-        FASE DE EXTRAÇÃO DE ROCHA
-        <span class="icon"><i class="fas fa-chevron-down"></i></span>
-      </div>
-      <div id="rock-extraction" class="submenu">
-        <!-- EXTRAÇÃO EM BANCADA E CORTE EM BLOCOS -->
-        <div class="list-group-item" onclick="toggleSubmenu('bancada-corte', this)">
-          EXTRAÇÃO EM BANCADA E CORTE EM BLOCOS
-          <span class="icon"><i class="fas fa-chevron-down"></i></span>
-        </div>
-        <div id="bancada-corte" class="submenu">
-          <!-- SAIDAS -->
-          <div class="list-group-item" onclick="toggleSubmenu('saidas', this)">
-            SAIDAS
+      <!-- Sidebar -->
+      <div id="sidebar" class="sidebar">
+        <div class="list-group">
+          <!-- FASE DE EXTRAÇÃO DE ROCHA -->
+          <div class="list-group-item" onclick="toggleSubmenu('rock-extraction', this)">
+            FASE DE EXTRAÇÃO DE ROCHA
             <span class="icon"><i class="fas fa-chevron-down"></i></span>
           </div>
-          <div id="saidas" class="submenu">
-            <div class="list-group-item" onclick="showForm('ROCHA EXTRAÍDA')">ROCHA EXTRAÍDA</div>
-            <div class="list-group-item" onclick="showForm('BLOCOS REGULARES')">BLOCOS REGULARES</div>
-            <div class="list-group-item" onclick="showForm('CO-PRODUTO')">CO-PRODUTO</div>
-            <div class="list-group-item" onclick="showForm('RESÍDUO SÓLIDO')">RESÍDUO SÓLIDO</div>
-            <div class="list-group-item" onclick="showForm('RESÍDUOS DE LAMA')">RESÍDUOS DE LAMA</div>
-            <div class="list-group-item" onclick="showForm('OUTRO')">OUTRO (ESPECIFIQUE)</div>
-          </div>
-
-          <!-- ENTRADAS -->
-          <div class="list-group-item" onclick="toggleSubmenu('entradas', this)">
-            ENTRADAS
-            <span class="icon"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div id="entradas" class="submenu">
-            <div class="list-group-item" onclick="showForm('FIO DIAMANTADO')">FIO DIAMANTADO</div>
-            <div class="list-group-item" onclick="showForm('Borracha vulcanizada')">Borracha vulcanizada para a proteção da polia</div>
-            <div class="list-group-item" onclick="showForm('Inserções abrasivas')">Inserções abrasivas do cortador de corrente</div>
-            <div class="list-group-item" onclick="showForm('Resina')">Resina</div>
-            <div class="list-group-item" onclick="showForm('Acessórios de desmonte')">Acessórios de desmonte</div>
-            <div class="list-group-item" onclick="showForm('Detonadores')">Detonadores</div>
-            <div class="list-group-item" onclick="showForm('Pólvora negra')">Pólvora negra</div>
-            <div class="list-group-item" onclick="showForm('Pavio de queima lenta')">Pavio de queima lenta</div>
-            <div class="list-group-item" onclick="showForm('ACESSÓRIOS DE DESMONTE')">ACESSÓRIOS DE DESMONTE</div>
-            <div class="list-group-item" onclick="showForm('ÁGUA LIMPA')">ÁGUA LIMPA</div>
-            <div class="list-group-item" onclick="showForm('Fonte de energia')">Fonte de energia</div>
-            <div class="list-group-item" onclick="showForm('Lubrificante')">Lubrificante</div>
-            <div class="list-group-item" onclick="showForm('COMBUSTÍVEL')">COMBUSTÍVEL</div>
-            <div class="list-group-item" onclick="showForm('CABOS DE AÇO')">CABOS DE AÇO</div>
-            <div class="list-group-item" onclick="showForm('BROCAS')">BROCAS</div>
-            <div class="list-group-item" onclick="showForm('HASTES')">HASTES</div>
-            <div class="list-group-item" onclick="showForm('ARGAMASSA EXPANSIVA')">ARGAMASSA EXPANSIVA</div>
-            <div class="list-group-item" onclick="showForm('CUNHA')">CUNHA</div>
-            <div class="list-group-item" onclick="showForm('OUTRO')">OUTRO (ESPECIFIQUE)</div>
-          </div>
-        </div>
-
-        <!-- TRATAMENTO DE RESÍDUOS DE LAMA -->
-        <div class="list-group-item" onclick="toggleSubmenu('residuos-lama', this)">
-          TRATAMENTO DE RESÍDUOS DE LAMA
-          <span class="icon"><i class="fas fa-chevron-down"></i></span>
-        </div>
-        <div id="residuos-lama" class="submenu">
-          <!-- SAIDAS -->
-          <div class="list-group-item" onclick="toggleSubmenu('saidas-lama', this)">
-            SAIDAS
-            <span class="icon"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div id="saidas-lama" class="submenu">
-            <div class="list-group-item" onclick="showForm('Resíduos de lama, após tratamento')">Resíduos de lama, após tratamento</div>
-            <div class="list-group-item" onclick="showForm('Água na saída')">Água na saída</div>
-            <div class="list-group-item" onclick="showForm('RESÍDUOS DE LAMA')">RESÍDUOS DE LAMA</div>
-            <div class="list-group-item" onclick="showForm('OUTRO')">OUTRO (ESPECIFIQUE)</div>
-          </div>
-
-          <!-- ENTRADAS -->
-          <div class="list-group-item" onclick="toggleSubmenu('entradas-lama', this)">
-            ENTRADAS
-            <span class="icon"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div id="entradas-lama" class="submenu">
-            <div class="list-group-item" onclick="showForm('Resíduos de lama a serem tratados')">Resíduos de lama a serem tratados</div>
-            <div class="list-group-item" onclick="showForm('Água LIMPA')">Água LIMPA</div>
-            <div class="list-group-item" onclick="showForm('FONTE DE ENERGIA')">FONTE DE ENERGIA</div>
-            <div class="list-group-item" onclick="showForm('FOCULANTE')">FOCULANTE</div>
-            <div class="list-group-item" onclick="showForm('OUTRO')">OUTRO (ESPECIFIQUE)</div>
-          </div>
-        </div>
-
-        <!-- TECNOLOGIA UTILIZADA -->
-        <div class="list-group-item" onclick="toggleSubmenu('tecnologia', this)">
-          TECNOLOGIA UTILIZADA
-          <span class="icon"><i class="fas fa-chevron-down"></i></span>
-        </div>
-        <div id="tecnologia" class="submenu">
-          <div class="list-group-item" onclick="showForm('Maquinário')">Maquinário</div>
-        </div>
-      </div>
-
-      <!-- FASE DE TRANSPORTE -->
-      <div class="list-group-item" onclick="showForm('FASE DE TRANSPORTE')">
-        FASE DE TRANSPORTE
-        <span class="icon"><i class="fas fa-truck"></i></span>
-      </div>
-
-      <!-- FASE DE INDÚSTRIA -->
-      <div class="list-group-item" onclick="showForm('FASE DE INDÚSTRIA')">
-        FASE DE INDÚSTRIA
-        <span class="icon"><i class="fas fa-industry"></i></span>
-      </div>
-    </div>
-  </div>
-  
-     <!-- Content Area -->
-     <div class="col-md-9 offset-md-3">
-      <div id="section-rocks" class="content-section">
-        <h1 class="mb-4">Manage Rocks</h1>
-        <!-- Botão para abrir o formulário -->
-        <button class="btn btn-primary mb-4" onclick="showForm('rockForm')">Add New Rock</button>
-
-        <!-- Formulário de Rock -->
-        <div id="rockForm" class="form-container mb-5" style="display:none;">
-          <div class="card shadow border-primary">
-            <div class="card-body">
-              <h2 id="formTitle" class="card-title mb-4">Add / Edit Rock</h2>
-              <form id="rockFormElement" method="POST" class="needs-validation" novalidate>
-                <input type="hidden" id="rockId" name="id">
-                <input type="hidden" name="_method" value="PUT">
-
-                <!-- Campos do formulário -->
-                <div class="row g-3">
-                  <div class="col-md-4">
-                    <label for="rockType" class="form-label">Rock Type</label>
-                    <input type="text" class="form-control" id="rockType" name="type" placeholder="Enter rock type" required>
-                    <div class="invalid-feedback">Please provide a rock type.</div>
-                  </div>
-
-                  <div class="col-md-4">
-                    <label for="rockQuantity" class="form-label">Total Quantity (tons)</label>
-                    <input type="number" class="form-control" id="rockQuantity" name="total_quantity" placeholder="Enter total quantity" required>
-                    <div class="invalid-feedback">Please provide a valid quantity.</div>
-                  </div>
-
-                  <div class="col-md-4">
-                    <label for="rockWeight" class="form-label">Weight (tons)</label>
-                    <input type="number" class="form-control" id="rockWeight" name="weight" placeholder="Enter weight" required>
-                    <div class="invalid-feedback">Please provide a valid weight.</div>
-                  </div>
-                </div>
-
-                <div class="mt-4">
-                  <button type="submit" class="btn btn-success">Submit</button>
-                  <button type="button" class="btn btn-secondary" onclick="hideForm('rockForm')">Cancel</button>
-                </div>
-              </form>
+          <div id="rock-extraction" class="submenu">
+            <!-- EXTRAÇÃO EM BANCADA E CORTE EM BLOCOS -->
+            <div class="list-group-item" onclick="toggleSubmenu('bancada-corte', this)">
+              EXTRAÇÃO EM BANCADA E CORTE EM BLOCOS
+              <span class="icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div id="bancada-corte" class="submenu">
+              <!-- SAIDAS -->
+                <div class="list-group-item" onclick="showRockForm()">ROCHA EXTRAÍDA</div>
+                <div class="list-group-item" onclick="showRegularBlockForm()">BLOCOS REGULARES</div>
+                <div class="list-group-item" onclick="showCoProductForm()">CO-PRODUTO</div>
+                <div class="list-group-item" onclick="showSolidWasteForm()">RESÍDUO SÓLIDO</div>
             </div>
           </div>
         </div>
-
-        <!-- Lista de Rochas -->
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover table-striped">
-            <thead class="table-dark">
-              <tr>
-                <th>ID</th>
-                <th>Type</th>
-                <th>Quantity (tons)</th>
-                <th>Weight (tons)</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% rocks.forEach(function(rock) { %>
-                <tr>
-                  <td><%= rock.id %></td>
-                  <td><%= rock.type %></td>
-                  <td><%= rock.total_quantity %></td>
-                  <td><%= rock.weight %></td>
-                  <td>
-                    <button class="btn btn-warning btn-sm me-2" onclick="showForm('rockForm', '<%= rock.id %>', '<%= rock.type %>', '<%= rock.total_quantity %>', '<%= rock.weight %>')"><i class="fas fa-pen"></i></button>
-                    <form action="/rock/<%= rock.id %>/delete" method="POST" style="display: inline;">
-                      <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this rock?');"><i class="fas fa-trash-alt"></i></button>
-                    </form>
-                  </td>
-                </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<div class="col-md-9 offset-md-3">
-  <div id="section-regular-block" class="content-section">
-    <h1 class="mb-4">Manage Regular Blocks</h1>
-    <!-- Botão para abrir o formulário -->
-    <button class="btn btn-primary mb-4" onclick="showForm('regularBlockForm')">Add New Regular Block</button>
+      <!-- Content Area -->
+      <div class="col-md-9 offset-md-3">
+        <!-- Seção de Rocks -->
+        <div id="section-rocks" class="content-section" style="display:none;">
+          <h1 class="mb-4">Manage Rocks</h1>
+          <button class="btn btn-primary mb-4" onclick="toggleForm('rockForm')">Add New Rock</button>
 
-    <!-- Formulário de Bloco Regular -->
-    <div id="regularBlockForm" class="form-container mb-5" style="display:none;">
-      <div class="card shadow border-primary">
-        <div class="card-body">
-          <h2 id="formTitle" class="card-title mb-4">Add / Edit Regular Block</h2>
-          <form id="regularBlockFormElement" method="POST" class="needs-validation" novalidate>
-            <input type="hidden" id="regularBlockId" name="id">
-            <input type="hidden" name="_method" value="PUT">
+          <!-- Formulário de Rock -->
+          <div id="rockForm" class="form-container mb-5" style="display:none;">
+            <div class="card shadow border-primary">
+              <div class="card-body">
+                <h2 class="card-title mb-4">Add / Edit Rock</h2>
+                <form id="rockFormElement" method="POST" class="needs-validation" novalidate>
+                  <input type="hidden" id="rockId" name="id">
+                  <input type="hidden" name="_method" value="PUT">
 
-            <!-- Campos do formulário -->
-            <div class="row g-3">
-              <div class="col-md-4">
-                <label for="regularBlockType" class="form-label">Regular Block Type</label>
-                <input type="text" class="form-control" id="regularBlockType" name="type" placeholder="Enter regular block type" required>
-                <div class="invalid-feedback">Please provide a regular block type.</div>
-              </div>
+                  <!-- Campos do formulário -->
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label for="rockType" class="form-label">Rock Type</label>
+                      <input type="text" class="form-control" id="rockType" name="type" placeholder="Enter rock type" required>
+                      <div class="invalid-feedback">Please provide a rock type.</div>
+                    </div>
 
-              <div class="col-md-4">
-                <label for="regularBlockQuantity" class="form-label">Total Quantity (tons)</label>
-                <input type="number" class="form-control" id="regularBlockQuantity" name="total_quantity" placeholder="Enter total quantity" required>
-                <div class="invalid-feedback">Please provide a valid quantity.</div>
-              </div>
+                    <div class="col-md-4">
+                      <label for="rockQuantity" class="form-label">Total Quantity (tons)</label>
+                      <input type="number" class="form-control" id="rockQuantity" name="total_quantity" placeholder="Enter total quantity" required>
+                      <div class="invalid-feedback">Please provide a valid quantity.</div>
+                    </div>
 
-              <div class="col-md-4">
-                <label for="regularBlockEconomicValue" class="form-label">Economic Value (tons)</label>
-                <input type="number" class="form-control" id="regularBlockEconomicValue" name="economic_value" placeholder="Enter economic value" required>
-                <div class="invalid-feedback">Please provide a valid economic value.</div>
-              </div>
-            </div>
+                    <div class="col-md-4">
+                      <label for="rockWeight" class="form-label">Weight (tons)</label>
+                      <input type="number" class="form-control" id="rockWeight" name="weight" placeholder="Enter weight" required>
+                      <div class="invalid-feedback">Please provide a valid weight.</div>
+                    </div>
+                  </div>
 
-            <div class="mt-4">
-              <button type="submit" class="btn btn-success">Submit</button>
-              <button type="button" class="btn btn-secondary" onclick="hideForm('regularBlockForm')">Cancel</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lista de blocos Regulares -->
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Quantity (tons)</th>
-            <th>Economic Value (&#8364;)</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% regularRocks.forEach(function(regular) { %>
-            <tr>
-              <td><%= regularRocks.id %></td>
-              <td><%= regularRocks.type %></td>
-              <td><%= regularRocks.quantity %></td>
-              <td><%= regularRocks.economic_value %></td>
-              <td>
-                <button class="btn btn-warning btn-sm me-2" onclick="showForm('regularBlockForm', '<%= regular.id %>', '<%= regular.type %>', '<%= regular.quantity %>', '<%= regular.economic_value %>')"><i class="fas fa-pen"></i></button>
-                <form action="/regularRock/<%= regular.id %>/delete" method="POST" style="display: inline;">
-                  <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this regular block?');"><i class="fas fa-trash-alt"></i></button>
+                  <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForm('rockForm')">Cancel</button>
+                  </div>
                 </form>
-              </td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="col-md-9 offset-md-3">
-  <div id="section-co-produto" class="content-section">
-    <h1 class="mb-4">Manage Co-Product</h1>
-    <!-- Botão para abrir o formulário -->
-    <button class="btn btn-primary mb-4" onclick="showForm('coProductForm')">Add New Co-product</button>
-
-    <!-- Formulário de Co-produto -->
-    <div id="coProductForm" class="form-container mb-5" style="display:none;">
-      <div class="card shadow border-primary">
-        <div class="card-body">
-          <h2 id="formTitle" class="card-title mb-4">Add / Edit Co-product</h2>
-          <form id="coProductFormElement" method="POST" class="needs-validation" novalidate>
-            <input type="hidden" id="coProductId" name="id">
-            <input type="hidden" name="_method" value="PUT">
-
-            <!-- Campos do formulário -->
-            <div class="row g-3">
-              <div class="col-md-4">
-                <label for="coProductType" class="form-label">Co-product Type</label>
-                <input type="text" class="form-control" id="coProductType" name="type" placeholder="Enter Co-product type" required>
-                <div class="invalid-feedback">Please provide a co-product type.</div>
-              </div>
-
-              <div class="col-md-4">
-                <label for="regularCoProduct" class="form-label">Total Quantity (tons)</label>
-                <input type="number" class="form-control" id="coProductQuantity" name="total_quantity" placeholder="Enter total quantity" required>
-                <div class="invalid-feedback">Please provide a valid quantity.</div>
-              </div>
-
-              <div class="col-md-4">
-                <label for="coProductEconomicValue" class="form-label">Economic Value (tons)</label>
-                <input type="number" class="form-control" id="coProductEconomicValue" name="economic_value" placeholder="Enter economic value" required>
-                <div class="invalid-feedback">Please provide a valid economic value.</div>
               </div>
             </div>
+          </div>
 
-            <div class="mt-4">
-              <button type="submit" class="btn btn-success">Submit</button>
-              <button type="button" class="btn btn-secondary" onclick="hideForm('coProductForm')">Cancel</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lista de Co-produtos -->
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Quantity (tons)</th>
-            <th>Economic Value (&#8364;)</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% coProducts.forEach(function(coProduct) { %>
-            <tr>
-              <td><%= coProduct.id %></td>
-              <td><%= coProduct.type %></td>
-              <td><%= coProduct.quantity %></td>
-              <td><%= coProduct.economic_value %></td>
-              <td>
-                <button class="btn btn-warning btn-sm me-2" onclick="showForm('coProductForm', '<%= coProduct.id %>', '<%= coProduct.type %>', '<%= coProduct.quantity %>', '<%= coProduct.economic_value %>')"><i class="fas fa-pen"></i></button>
-                <form action="/coProduct/<%= coProduct.id %>/delete" method="POST" style="display: inline;">
-                  <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this co-product?');"><i class="fas fa-trash-alt"></i></button>
-                </form>
-              </td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-     <div class="col-md-9 offset-md-3">
-      <div id="section-solid-waste" class="content-section">
-        <h1 class="mb-4">Manage Solid Waste</h1>
-        <!-- Botão para abrir o formulário -->
-        <button class="btn btn-primary mb-4" onclick="showForm('solidWasteForm')">Add New Solid Waste</button>
-
-        <!-- Formulário de Resíduo Sólido -->
-        <div id="solidWasteForm" class="form-container mb-5" style="display:none;">
-          <div class="card shadow border-primary">
-            <div class="card-body">
-              <h2 id="formTitle" class="card-title mb-4">Add / Edit Solid Waste</h2>
-              <form id="solidWasteFormElement" method="POST" class="needs-validation" novalidate>
-                <input type="hidden" id="solidWasteId" name="id">
-                <input type="hidden" name="_method" value="PUT">
-
-                <!-- Campos do formulário -->
-                <div class="row g-3">
-                  <div class="col-md-4">
-                    <label for="solidWasteType" class="form-label">Solid Waste Type</label>
-                    <input type="text" class="form-control" id="solidWasteType" name="type" placeholder="Enter solid waste type" required>
-                    <div class="invalid-feedback">Please provide a solid waste type.</div>
-                  </div>
-
-                  <div class="col-md-4">
-                    <label for="solidWasteQuantity" class="form-label">Total Quantity (tons)</label>
-                    <input type="number" class="form-control" id="solidWasteQuantity" name="total_quantity" placeholder="Enter total quantity" required>
-                    <div class="invalid-feedback">Please provide a valid quantity.</div>
-                  </div>
-
-                  <div class="col-md-4">
-                    <label for="solidWasteDisposal" class="form-label">Disposal</label>
-                    <input type="text" class="form-control" id="solidWasteDisposal" name="disposal" placeholder="Enter disposal" required>
-                    <div class="invalid-feedback">Please provide a disposal.</div>
-                  </div>
-                </div>
-
-                <div class="mt-4">
-                  <button type="submit" class="btn btn-success">Submit</button>
-                  <button type="button" class="btn btn-secondary" onclick="hideForm('solidWasteForm')">Cancel</button>
-                </div>
-              </form>
-            </div>
+          <!-- Lista de Rochas -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Quantity (tons)</th>
+                  <th>Weight (tons)</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% rocks.forEach(function(rock) { %>
+                  <tr>
+                    <td><%= rock.id %></td>
+                    <td><%= rock.type %></td>
+                    <td><%= rock.total_quantity %></td>
+                    <td><%= rock.weight %></td>
+                    <td>
+                      <button class="btn btn-warning btn-sm me-2" onclick="showForm('rockForm', '<%= rock.id %>', '<%= rock.type %>', '<%= rock.total_quantity %>', '<%= rock.weight %>')"><i class="fas fa-pen"></i></button>
+                      <form action="/rock/<%= rock.id %>/delete" method="POST" style="display: inline;">
+                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this rock?');"><i class="fas fa-trash-alt"></i></button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Lista de Resíduos Sólidos -->
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover table-striped">
-            <thead class="table-dark">
-              <tr>
-                <th>ID</th>
-                <th>Type</th>
-                <th>Quantity (tons)</th>
-                <th>Disposal</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% solidWastes.forEach(function(solidWaste) { %>
+        <!-- Seção de Regular Blocks -->
+        <div id="section-regularBlock" class="content-section" style="display:none;">
+          <h1 class="mb-4">Manage Regular Blocks</h1>
+          <button class="btn btn-primary mb-4" onclick="toggleForm('regularBlockForm')">Add New Regular Block</button>
+
+          <!-- Formulário de Regular Block -->
+          <div id="regularBlockForm" class="form-container mb-5" style="display:none;">
+            <div class="card shadow border-primary">
+              <div class="card-body">
+                <h2 class="card-title mb-4">Add / Edit Regular Block</h2>
+                <form id="regularBlockFormElement" method="POST" class="needs-validation" novalidate>
+                  <input type="hidden" id="regularBlockId" name="id">
+                  <input type="hidden" name="_method" value="PUT">
+
+                  <!-- Campos do formulário -->
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label for="regularBlockType" class="form-label">Regular Block Type</label>
+                      <input type="text" class="form-control" id="regularBlockType" name="type" placeholder="Enter regular block type" required>
+                      <div class="invalid-feedback">Please provide a regular block type.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="regularBlockQuantity" class="form-label">Total Quantity (tons)</label>
+                      <input type="number" class="form-control" id="regularBlockQuantity" name="total_quantity" placeholder="Enter total quantity" required>
+                      <div class="invalid-feedback">Please provide a valid quantity.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="regularBlockEconomicValue" class="form-label">Economic Value (tons)</label>
+                      <input type="number" class="form-control" id="regularBlockEconomicValue" name="economic_value" placeholder="Enter economic value" required>
+                      <div class="invalid-feedback">Please provide a valid economic value.</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForm('regularBlockForm')">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista de Regular Blocks -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+              <thead class="table-dark">
                 <tr>
-                  <td><%= solidWaste.id %></td>
-                  <td><%= solidWaste.type %></td>
-                  <td><%= solidWaste.total_quantity %></td>
-                  <td><%= solidWaste.weight %></td>
-                  <td>
-                    <button class="btn btn-warning btn-sm me-2" onclick="showForm('solidWasteForm', '<%= solidWaste.id %>', '<solidWaste.type %>', '<solidWaste.total_quantity %>', '<solidWaste.disposal %>')"><i class="fas fa-pen"></i></button>
-                    <form action="/solidWaste/<%= solidWaste.id %>/delete" method="POST" style="display: inline;">
-                      <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this solidWaste?');"><i class="fas fa-trash-alt"></i></button>
-                    </form>
-                  </td>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Quantity (tons)</th>
+                  <th>Economic Value (&#8364;)</th>
+                  <th>Actions</th>
                 </tr>
-              <% }) %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% regularRocks.forEach(function(regular) { %>
+                  <tr>
+                    <td><%= regular.id %></td>
+                    <td><%= regular.type %></td>
+                    <td><%= regular.total_quantity %></td>
+                    <td><%= regular.economic_value %></td>
+                    <td>
+                      <button class="btn btn-warning btn-sm me-2" onclick="showForm('regularBlockForm', '<%= regular.id %>', '<%= regular.type %>', '<%= regular.total_quantity %>', '<%= regular.economic_value %>')"><i class="fas fa-pen"></i></button>
+                      <form action="/regularRock/<%= regular.id %>/delete" method="POST" style="display: inline;">
+                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this regular block?');"><i class="fas fa-trash-alt"></i></button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+        <!-- Seção de Co-Products -->
+        <div id="section-coProduct" class="content-section" style="display:none;">
+          <h1 class="mb-4">Manage Co-Products</h1>
+          <button class="btn btn-primary mb-4" onclick="toggleForm('coProductForm')">Add New Co-Product</button>
+
+          <!-- Formulário de Co-Products -->
+          <div id="coProductForm" class="form-container mb-5" style="display:none;">
+            <div class="card shadow border-primary">
+              <div class="card-body">
+                <h2 class="card-title mb-4">Add / Edit Co-Product</h2>
+                <form id="coProductFormElement" method="POST" class="needs-validation" novalidate>
+                  <input type="hidden" id="coProductId" name="id">
+                  <input type="hidden" name="_method" value="PUT">
+
+                  <!-- Campos do formulário -->
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label for="coProductType" class="form-label">Co-Product Type</label>
+                      <input type="text" class="form-control" id="coProductType" name="type" placeholder="Enter co-product type" required>
+                      <div class="invalid-feedback">Please provide a co-product type.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="coProductQuantity" class="form-label">Total Quantity (tons)</label>
+                      <input type="number" class="form-control" id="coProductQuantity" name="total_quantity" placeholder="Enter total quantity" required>
+                      <div class="invalid-feedback">Please provide a valid quantity.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="coProductEconomicValue" class="form-label">Economic Value (&#8364;)</label>
+                      <input type="number" class="form-control" id="coProductEconomicValue" name="economic_value" placeholder="Enter economic value" required>
+                      <div class="invalid-feedback">Please provide a valid economic value.</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForm('coProductForm')">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista de Co-Products -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Quantity (tons)</th>
+                  <th>Economic Value (&#8364;)</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% coProducts.forEach(function(coProduct) { %>
+                  <tr>
+                    <td><%= coProduct.id %></td>
+                    <td><%= coProduct.type %></td>
+                    <td><%= coProduct.total_quantity %></td>
+                    <td><%= coProduct.economic_value %></td>
+                    <td>
+                      <button class="btn btn-warning btn-sm me-2" onclick="showForm('coProductForm', '<%= coProduct.id %>', '<%= coProduct.type %>', '<%= coProduct.total_quantity %>', '<%= coProduct.economic_value %>')"><i class="fas fa-pen"></i></button>
+                      <form action="/coProduct/<%= coProduct.id %>/delete" method="POST" style="display: inline;">
+                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this co-product?');"><i class="fas fa-trash-alt"></i></button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Seção de Solid Waste -->
+        <div id="section-solidWaste" class="content-section" style="display:none;">
+          <h1 class="mb-4">Manage Solid Waste</h1>
+          <button class="btn btn-primary mb-4" onclick="toggleForm('solidWasteForm')">Add New Solid Waste</button>
+
+          <!-- Formulário de Solid Waste -->
+          <div id="solidWasteForm" class="form-container mb-5" style="display:none;">
+            <div class="card shadow border-primary">
+              <div class="card-body">
+                <h2 class="card-title mb-4">Add / Edit Solid Waste</h2>
+                <form id="solidWasteFormElement" method="POST" class="needs-validation" novalidate>
+                  <input type="hidden" id="solidWasteId" name="id">
+                  <input type="hidden" name="_method" value="PUT">
+
+                  <!-- Campos do formulário -->
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label for="solidWasteType" class="form-label">Solid Waste Type</label>
+                      <input type="text" class="form-control" id="solidWasteType" name="type" placeholder="Enter solid waste type" required>
+                      <div class="invalid-feedback">Please provide a solid waste type.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="solidWasteQuantity" class="form-label">Total Quantity (tons)</label>
+                      <input type="number" class="form-control" id="solidWasteQuantity" name="total_quantity" placeholder="Enter total quantity" required>
+                      <div class="invalid-feedback">Please provide a valid quantity.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="solidWasteDisposal" class="form-label">Disposal</label>
+                      <input type="text" class="form-control" id="solidWasteDisposal" name="disposal" placeholder="Enter disposal" required>
+                      <div class="invalid-feedback">Please provide a disposal.</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideForm('solidWasteForm')">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista de Solid Waste -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Quantity (tons)</th>
+                  <th>Disposal</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% solidWastes.forEach(function(solidWaste) { %>
+                  <tr>
+                    <td><%= solidWaste.id %></td>
+                    <td><%= solidWaste.type %></td>
+                    <td><%= solidWaste.total_quantity %></td>
+                    <td><%= solidWaste.disposal %></td>
+                    <td>
+                      <button class="btn btn-warning btn-sm me-2" onclick="showForm('solidWasteForm', '<%= solidWaste.id %>', '<%= solidWaste.type %>', '<%= solidWaste.total_quantity %>', '<%= solidWaste.disposal %>')"><i class="fas fa-pen"></i></button>
+                      <form action="/solidWaste/<%= solidWaste.id %>/delete" method="POST" style="display: inline;">
+                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this solid waste?');"><i class="fas fa-trash-alt"></i></button> </form> </td> </tr> <% }) %> </tbody> </table> </div> </div> </div> </div>
+
+                      </div> 
+                      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> 
+                      <script> 
+                        function toggleForm(formId, actionUrl = '') {
+                          const form = document.getElementById(formId);
+                          form.style.display = form.style.display === 'block' ? 'none' : 'block';
+                          
+                          if (actionUrl) {
+                            const formElement = form.querySelector('form');
+                            formElement.setAttribute('action', actionUrl);
+                          }
+                        }
+                        
+                        function hideForm(formId) { 
+                          const form = document.getElementById(formId); 
+                          form.style.display = 'none'; 
+                        } 
+                        
+                        function showForm(sectionId, formAction = '') {
+                          document.querySelectorAll('.content-section').forEach(section => section.style.display = 'none');
+                          document.getElementById(sectionId).style.display = 'block';
+                          
+                          if (formAction) {
+                            const formElement = document.getElementById(sectionId).querySelector('form');
+                            formElement.setAttribute('action', formAction);
+                          }
+                        }
+
+                        function showRockForm() {
+                          showForm('section-rocks', '/rock');
+                        }
+                        
+                        function showRegularBlockForm() {
+                          showForm('section-regularBlock', '/regularBlock');
+                        }
+                        
+                        function showCoProductForm() {
+                          showForm('section-coProduct', '/coProduct');
+                        }
+                        
+                        function showSolidWasteForm() {
+                          showForm('section-solidWaste', '/solidWaste');
+                        }
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  function showForm(formId, id = null, type = '', total_quantity = '', weight = '') {
-    const form = document.getElementById(formId);
-    const formElement = document.getElementById('rockFormElement');
-    const actionUrl = id ? `/rock/${id}/edit?_method=PUT` : '/rock';
-    formElement.action = actionUrl;
-
-    document.getElementById('rockId').value = id || '';
-    document.getElementById('rockType').value = type || '';
-    document.getElementById('rockQuantity').value = total_quantity || '';
-    document.getElementById('rockWeight').value = weight || '';
-
-    form.style.display = 'block';
-  }
-
-  function hideForm(formId) {
-    const form = document.getElementById(formId);
-    form.style.display = 'none';
-  }
-
-  (() => {
-    'use strict';
-    const forms = document.querySelectorAll('.needs-validation');
-    Array.prototype.slice.call(forms).forEach((form) => {
-      form.addEventListener('submit', (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  })();
-  
-  function toggleSubmenu(id, element) {
-    const submenu = document.getElementById(id);
-    const icon = element.querySelector('.icon i');
-
-    if (submenu.style.display === 'block') {
-      submenu.style.display = 'none';
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-chevron-down');
-    } else {
-      submenu.style.display = 'block';
-      icon.classList.remove('fa-chevron-down');
-      icon.classList.add('fa-times');
-    }
-  }
-</script>
-
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    overflow-x: hidden;
-    background-color: #e9e9e9;
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #14870c;
-    width: 100vw;
-    padding: 0 5vw;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    height: 10vh;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-
-  .navbar .logo {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-
-  .navbar .user-greeting {
-    font-size: 1.2em;
-  }
-
-  .navbar .logout-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-  }
-
-  .navbar .logout-btn i {
-    margin-right: 5px;
-  }
-
-  body {
-    padding-top: 10vh;
-    margin: 0;
-  }
-
-  #sidebar {
-    position: fixed;
-    top: 10vh;
-    bottom: 0;
-    left: 0;
-    width: 25%;
-    height: calc(100vh - 10vh);
-    background-color: #343a40;
-    padding: 0;
-    overflow-y: auto;
-  }
-
-  .list-group-item {
-    background-color: #343a40;
-    color: white;
-    border: none;
-    width: 100%;
-    padding: 15px 20px;
-    cursor: pointer;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .list-group-item:hover {
-    background-color: #495057;
-    color: white;
-    transition: background-color 0.3s ease;
-  }
-
-  .icon {
-    margin-left: auto;
-  }
-
-  .submenu {
-    display: none;
-    padding-left: 20px;
-  }
-
-  .submenu .list-group-item {
-    background-color: #343a40;
-  }
-
-  .submenu .list-group-item:hover {
-    background-color: #495057;
-  }
-
-  .col-md-9.offset-md-3 {
-    margin-left: 25%;
-    padding-top: 20px;
-  }
-
-  .table-responsive {
-    margin-top: 20px;
-  }
-</style>
-</body>
-</html>
+                        function toggleSubmenu(id, element) { 
+                          const submenu = document.getElementById(id);
+                          const icon = element.querySelector('.icon i'); 
+                          if (submenu.style.display === 'block') { 
+                            submenu.style.display = 'none'; icon.classList.remove('fa-times'); 
+                            icon.classList.add('fa-chevron-down'); } 
+                          else { 
+                            submenu.style.display = 'block'; 
+                            icon.classList.remove('fa-chevron-down'); 
+                            icon.classList.add('fa-times'); 
+                          } 
+                        } 
+                      </script> 
+                      
+                      <style> body, html { height: 100%; margin: 0; overflow-x: hidden; background-color: #e9e9e9; } .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #14870c; width: 100vw; padding: 0 5vw; color: #fff; position: fixed; top: 0; height: 10vh; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); z-index: 1000; } .navbar .logo { font-size: 1.5em; font-weight: bold; } .navbar .user-greeting { font-size: 1.2em; } .navbar .logout-btn { background-color: transparent; border: none; cursor: pointer; color: #fff; font-size: 1.2em; display: flex; align-items: center; } .navbar .logout-btn i { margin-right: 5px; } body { padding-top: 10vh; margin: 0; } #sidebar { position: fixed; top: 10vh; bottom: 0; left: 0; width: 25%; height: calc(100vh - 10vh); background-color: #343a40; padding: 0; overflow-y: auto; } .list-group-item { background-color: #343a40; color: white; border: none; width: 100%; padding: 15px 20px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; } .list-group-item:hover { background-color: #495057; color: white; transition: background-color 0.3s ease; } .icon { margin-left: auto; } .submenu { display: none; padding-left: 20px; } .submenu .list-group-item { background-color: #343a40; } .submenu .list-group-item:hover { background-color: #495057; } .col-md-9.offset-md-3 { margin-left: 25%; padding-top: 20px; } .table-responsive { margin-top: 20px; } </style> </body> </html>
