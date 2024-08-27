@@ -1,17 +1,33 @@
-import RegularRock from '../models/regularBlockModel';
+import RegularBlock from '../models/regularBlockModel';
 
-class RegularRockRepository {
-  async create(data: { type: string; quantity: number; economic_value: number }) {
-    return await RegularRock.create(data);
+class RegularBlockRepository {
+  async create(data: { type: string; total_quantity: number; economic_value: number; revenue_percentage: number }) {
+    return await RegularBlock.create(data);
   }
 
   async findById(id: number) {
-    return await RegularRock.findByPk(id);
+    return await RegularBlock.findByPk(id);
   }
 
   async findAll() {
-    return await RegularRock.findAll();
+    return await RegularBlock.findAll();
+  }
+
+  async update(id: number, data: Partial<{ type: string; total_quantity: number; economic_value: number; revenue_percentage: number }>) {
+    const regularBlock = await RegularBlock.findByPk(id);
+    if (regularBlock) {
+      return await regularBlock.update(data);
+    }
+    return null;
+  }
+
+  async delete(id: number) {
+    const regularBlock = await RegularBlock.findByPk(id);
+    if (regularBlock) {
+      return await regularBlock.destroy();
+    }
+    return null;
   }
 }
 
-export default new RegularRockRepository();
+export default new RegularBlockRepository();

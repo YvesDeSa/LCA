@@ -1,27 +1,50 @@
 import { Request, Response } from 'express';
-import RegularRockService from '../services/regularRockService';
+import RegularBlockService from '../services/regularRockService';
 
-class RegularRockController {
+class RegularBlockController {
   async add(req: Request, res: Response) {
-    const { type, quantity, economic_value } = req.body;
-    const regularRock = await RegularRockService.add({ type, quantity, economic_value });
+    const { type, total_quantity, economic_value, revenue_percentage } = req.body;
+    const regularBlock = await RegularBlockService.add({ type, total_quantity, economic_value, revenue_percentage });
     res.redirect('saidas/extracao-bancada');
   }
 
   async getAll(req: Request, res: Response) {
-    const regularRocks = await RegularRockService.getAll();
-    res.json(regularRocks);
+    const regularBlocks = await RegularBlockService.getAll();
+    res.json(regularBlocks);
   }
 
   async getById(req: Request, res: Response) {
     const { id } = req.params;
-    const regularRock = await RegularRockService.getById(Number(id));
-    if (regularRock) {
-      res.json(regularRock);
+    const regularBlock = await RegularBlockService.getById(Number(id));
+    if (regularBlock) {
+      res.json(regularBlock);
     } else {
-      res.status(404).send('Regular Rock not found');
+      res.status(404).send('Regular Block not found');
+    }
+  }
+
+  async update(req: Request, res: Response): Promise<void> {
+    const { id } = req.params;
+    const { type, total_quantity, economic_value, revenue_percentage } = req.body;
+
+    try {
+      await RegularBlockService.update(Number(id), { type, total_quantity, economic_value, revenue_percentage });
+      res.redirect('back');
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async delete(req: Request, res: Response): Promise<void> {
+    const { id } = req.params;
+
+    try {
+      await RegularBlockService.delete(Number(id));
+      res.redirect('back');
+    } catch (error) {
+      res.status(500).send(error);
     }
   }
 }
 
-export default new RegularRockController();
+export default new RegularBlockController();
