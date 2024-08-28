@@ -1,0 +1,74 @@
+<div id="section-rocks" class="content-section">
+  <h1 class="mb-4">Manage Rocks</h1>
+  <button class="btn btn-primary mb-4" onclick="toggleForm('rockForm')">Add New Rock</button>
+
+  <!-- Formulário de Rock -->
+  <div id="rockForm" class="form-container mb-5" style="display:none;">
+    <div class="card shadow border-primary">
+      <div class="card-body">
+        <h2 class="card-title mb-4">Add / Edit Rock</h2>
+        <form id="rockFormElement" method="POST" class="needs-validation" novalidate>
+          <!-- Campos do formulário -->
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label for="rockType" class="form-label">Rock Type</label>
+              <input type="text" class="form-control" id="rockType" name="type" placeholder="Enter rock type" required>
+              <div class="invalid-feedback">Please provide a rock type.</div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="rockQuantity" class="form-label">Total Quantity (tons)</label>
+              <input type="number" class="form-control" id="rockQuantity" name="total_quantity" placeholder="Enter total quantity" required>
+              <div class="invalid-feedback">Please provide a valid quantity.</div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="rockWeight" class="form-label">Weight (tons)</label>
+              <input type="number" class="form-control" id="rockWeight" name="weight" placeholder="Enter weight" required>
+              <div class="invalid-feedback">Please provide a valid weight.</div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="hideForm('rockForm')">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Rochas -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Quantity (tons)</th>
+          <th>Weight (tons)</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rocks.forEach(function(rock) { %>
+          <tr>
+            <td><%= rock.id %></td>
+            <td><%= rock.type %></td>
+            <td><%= rock.total_quantity %></td>
+            <td><%= rock.weight %></td>
+            <td>
+              <button class="btn btn-warning btn-sm me-2" 
+        onclick="showForm('section-rocks', '<%= rock.id %>', '<%= rock.type %>', '<%= rock.total_quantity %>', '', '', '<%= rock.weight %>')">
+  <i class="fas fa-pen"></i>
+</button>
+              <form action="/rock/<%= rock.id %>/delete" method="POST" style="display: inline;">
+                <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this rock?');"><i class="fas fa-trash-alt"></i></button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
