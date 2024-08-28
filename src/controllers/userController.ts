@@ -6,6 +6,7 @@ import RockService from '../services/rockService';
 import RegularRockService from '../services/regularRockService';
 import CoProductService from '../services/coProductService';
 import SolidWasteService from '../services/solidWasteService';
+import SlurryWasteService from '../services/slurryWasteService';
 
 class UserController {
   async loginPage(req: Request, res: Response): Promise<void> {
@@ -49,15 +50,18 @@ class UserController {
     const regularRocks = await RegularRockService.getAll();
     const coProducts = await CoProductService.getAll();
     const solidWastes = await SolidWasteService.getAll();
+    const slurryWastes = await SlurryWasteService.getAll();
+
 
     if (req.session) {
       res.render('index', {
-        userName: req.session.userName,
+        userName: userName,
         userId: req.session.userId,
         rocks,
         regularRocks,
         coProducts,
-        solidWastes
+        solidWastes,
+        slurryWastes
       });
     } else {
       res.redirect('/login');

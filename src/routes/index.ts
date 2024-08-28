@@ -5,6 +5,7 @@ import coProductRoutes from './coProductRoutes';
 import solidWasteRoutes from './solidWasteRoutes';
 import extractionBenchRoutes from './extractionBenchRoutes';
 import userRoutes from './userRoutes';
+import slurryWasteRoutes from './slurryWasteRoutes';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.use(coProductRoutes);
 router.use(solidWasteRoutes);
 router.use(extractionBenchRoutes);
 router.use(userRoutes);
+router.use(slurryWasteRoutes)
 
 
 export default router;

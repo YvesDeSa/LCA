@@ -36,6 +36,7 @@
             <div class="list-group-item" onclick="showRegularBlockForm()">BLOCOS REGULARES</div>
             <div class="list-group-item" onclick="showCoProductForm()">CO-PRODUTO</div>
             <div class="list-group-item" onclick="showSolidWasteForm()">RESÍDUO SÓLIDO</div>
+            <div class="list-group-item" onclick="showSlurryWasteForm()">RESÍDUOS DE LAMA</div>
           </div>
         </div>
       </div>
@@ -46,6 +47,7 @@
         <%- include('partials/regularBlock'); %>
         <%- include('partials/coProduct'); %>
         <%- include('partials/solidWaste'); %>
+        <%- include('partials/slurryWaste'); %>
       </div>
     </div>
   </div>
@@ -91,6 +93,10 @@
     
     function showSolidWasteForm() {
       showForm('section-solidWaste', '/solidWaste');
+    }
+
+    function showSlurryWasteForm() {
+      showForm('section-slurryWaste', '/slurryWaste');
     }
 
     function editForm(sectionId, data) {
