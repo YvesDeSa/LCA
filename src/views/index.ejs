@@ -39,6 +39,15 @@
             <div class="list-group-item" onclick="showSlurryWasteForm()">RESÍDUOS DE LAMA</div>
             <div class="list-group-item" onclick="showRockExtractionEntryForm()">ROCK EXTRACTION ENTRIES</div>
           </div>
+
+          <!-- TRATAMENTO DE RESÍDUOS DE LAMA -->
+          <div class="list-group-item" onclick="toggleSubmenu('slurry-treatment', this)">
+            TRATAMENTO DE RESÍDUOS DE LAMA
+            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div id="slurry-treatment" class="submenu">
+            <div class="list-group-item" onclick="showSlurryAfterTreatmentForm()">Resíduos de lama, após tratamento</div>
+          </div>
         </div>
       </div>
 
@@ -50,6 +59,7 @@
         <%- include('partials/solidWaste'); %>
         <%- include('partials/slurryWaste'); %>
         <%- include('partials/rockExtractionEntries'); %>
+        <%- include('partials/slurryAfterTreatment'); %>
       </div>
     </div>
   </div>
@@ -103,6 +113,10 @@
 
     function showRockExtractionEntryForm() {
       showForm('section-rock-extraction-entries', '/rock-extraction-entries');
+    }
+
+    function showSlurryAfterTreatmentForm() {
+      showForm('section-slurry-after-treatment', '/slurryAfterTreatment');
     }
 
     function editForm(sectionId, data) {

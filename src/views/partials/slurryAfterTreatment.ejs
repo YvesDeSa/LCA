@@ -1,0 +1,71 @@
+<div id="section-slurry-after-treatment" class="content-section" style="display:none;">
+    <h1 class="mb-4">Resíduos de lama, após tratamento</h1>
+    <button class="btn btn-primary mb-4" onclick="toggleForm('slurryAfterTreatmentForm')">Add New Residue</button>
+  
+    <!-- Formulário de Resíduos de lama, após tratamento -->
+    <div id="slurryAfterTreatmentForm" class="form-container mb-5" style="display:none;">
+      <div class="card shadow border-primary">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Add / Edit Residue</h2>
+          <form id="slurryAfterTreatmentFormElement" method="POST" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label for="quantity" class="form-label">Quantidade (m³)</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" required>
+                <div class="invalid-feedback">Please provide a valid quantity.</div>
+              </div>
+  
+              <div class="col-md-4">
+                <label for="density" class="form-label">Densidade média (t/m³)</label>
+                <input type="number" class="form-control" id="density" name="density" placeholder="Enter density" required>
+                <div class="invalid-feedback">Please provide a valid density.</div>
+              </div>
+  
+              <div class="col-md-4">
+                <label for="disposal" class="form-label">Disposição</label>
+                <input type="text" class="form-control" id="disposal" name="disposal" placeholder="Enter disposal method" required>
+                <div class="invalid-feedback">Please provide a disposal method.</div>
+              </div>
+            </div>
+  
+            <div class="mt-4">
+              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="button" class="btn btn-secondary" onclick="hideForm('slurryAfterTreatmentForm')">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Lista de Resíduos de Lama Após Tratamento -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Quantidade (m³)</th>
+            <th>Densidade (t/m³)</th>
+            <th>Disposição</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% slurryAfterTreatment.forEach(function(residue) { %>
+            <tr>
+              <td><%= residue.id %></td>
+              <td><%= residue.quantity %></td>
+              <td><%= residue.density %></td>
+              <td><%= residue.disposal %></td>
+              <td>
+                <button class="btn btn-warning btn-sm me-2" onclick="showForm('slurryAfterTreatmentForm', '<%= residue.id %>', '<%= residue.quantity %>', '<%= residue.density %>', '<%= residue.disposal %>')"><i class="fas fa-pen"></i></button>
+                <form action="/slurryAfterTreatment/<%= residue.id %>/delete" method="POST" style="display: inline;">
+                  <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this residue?');"><i class="fas fa-trash-alt"></i></button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

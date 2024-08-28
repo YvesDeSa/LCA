@@ -22,8 +22,8 @@ app.use(methodOverride('_method'));
 app.use(routes);
 
 async function createAdminAccount() {
-  const adminUsername = 'admin';
-  const adminPassword = 'admin123';
+  const adminUsername = 'CentroRochas';
+  const adminPassword = 'CentroRochas';
 
   const existingAdmin = await userService.register(adminUsername, adminPassword, "admin");
 

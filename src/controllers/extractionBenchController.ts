@@ -5,6 +5,7 @@ import CoProductService from '../services/coProductService';
 import SolidWasteService from '../services/solidWasteService';
 import SlurryWasteService from '../services/slurryWasteService';
 import rockExtractionEntryService from '../services/rockExtractionEntryService';
+import SlurryAfterTreatmentService from '../services/SlurryAfterTreatmentService';
 
 class ExtractionBenchController {
   async index(req: Request, res: Response): Promise<void> {
@@ -16,6 +17,7 @@ class ExtractionBenchController {
     const solidWastes = await SolidWasteService.getAll();
     const slurryWastes = await SlurryWasteService.getAll();
     const rockExtractionEntry = await rockExtractionEntryService.getAll();
+    const slurryAfterTreatment = await SlurryAfterTreatmentService.getAll();
 
 
     res.render('index', {
@@ -25,7 +27,8 @@ class ExtractionBenchController {
       coProducts,
       solidWastes,
       slurryWastes,
-      rockExtractionEntry
+      rockExtractionEntry,
+      slurryAfterTreatment
     });
   }
 }
