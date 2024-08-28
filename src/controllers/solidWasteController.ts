@@ -5,7 +5,7 @@ class SolidWasteController {
   async add(req: Request, res: Response) {
     const { type, total_quantity, disposition } = req.body;
     const solidWaste = await SolidWasteService.add({ type, total_quantity, disposition });
-    res.redirect('saidas/extracao-bancada');
+    res.redirect('/');
   }
 
   async getAll(req: Request, res: Response) {

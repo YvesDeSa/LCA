@@ -5,7 +5,7 @@ class CoProductController {
   async add(req: Request, res: Response) {
     const { type, total_quantity, economic_value, revenue_percentage } = req.body;
     const coProduct = await CoProductService.add({ type, total_quantity, economic_value, revenue_percentage });
-    res.redirect('saidas/extracao-bancada');
+    res.redirect('/');
   }
 
   async getAll(req: Request, res: Response) {

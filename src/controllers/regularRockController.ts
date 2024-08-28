@@ -4,8 +4,8 @@ import RegularBlockService from '../services/regularRockService';
 class RegularBlockController {
   async add(req: Request, res: Response) {
     const { type, total_quantity, economic_value, revenue_percentage } = req.body;
-    const regularBlock = await RegularBlockService.add({ type, total_quantity, economic_value, revenue_percentage });
-    res.redirect('saidas/extracao-bancada');
+    await RegularBlockService.add({ type, total_quantity, economic_value, revenue_percentage });
+    res.redirect('/');
   }
 
   async getAll(req: Request, res: Response) {

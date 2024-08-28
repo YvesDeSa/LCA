@@ -5,7 +5,7 @@ class RockController {
   async add(req: Request, res: Response) {
     const { type, total_quantity, weight } = req.body;
     const rock = await RockService.add({ type, total_quantity, weight });
-    res.redirect('saidas/extracao-bancada');
+    res.redirect('/');
   }
 
   async getAll(req: Request, res: Response) {

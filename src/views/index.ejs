@@ -93,6 +93,25 @@
       showForm('section-solidWaste', '/solidWaste');
     }
 
+    function editForm(sectionId, data) {
+      // Seleciona a seção correta
+      const section = document.getElementById(sectionId);
+      section.style.display = 'block';
+    
+      // Preenche os valores do formulário com os dados recebidos
+      Object.keys(data).forEach(key => {
+        const input = section.querySelector(`[name="${key}"]`);
+        if (input) {
+          input.value = data[key];
+        }
+      });
+    
+      // Define a ação correta no formulário de edição
+      const formElement = section.querySelector('form');
+      formElement.setAttribute('action', `/${sectionId}/${data.id}/edit`);
+      formElement.method = 'PUT'; // você pode alterar para PUT, dependendo da configuração do backend
+    }
+
 
     function toggleSubmenu(id, element) { 
       const submenu = document.getElementById(id);

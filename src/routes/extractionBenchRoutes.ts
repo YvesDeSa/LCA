@@ -3,6 +3,6 @@ import extractionBenchController from '../controllers/extractionBenchController'
 
 const router = Router();
 
-router.get('/saidas/extracao-bancada', extractionBenchController.index);
+router.get('/', extractionBenchController.index);
 
 export default router;

@@ -2,6 +2,11 @@ import { Request, Response } from 'express';
 import userService from '../services/userService';
 import path from 'path';
 
+import RockService from '../services/rockService';
+import RegularRockService from '../services/regularRockService';
+import CoProductService from '../services/coProductService';
+import SolidWasteService from '../services/solidWasteService';
+
 class UserController {
   async loginPage(req: Request, res: Response): Promise<void> {
     res.render('login'); 
@@ -39,10 +44,20 @@ class UserController {
   }
 
   async indexPage(req: Request, res: Response): Promise<void> {
+    const userName = req.session?.userName || 'Guest'; 
+    const rocks = await RockService.getAll();
+    const regularRocks = await RegularRockService.getAll();
+    const coProducts = await CoProductService.getAll();
+    const solidWastes = await SolidWasteService.getAll();
+
     if (req.session) {
       res.render('index', {
         userName: req.session.userName,
         userId: req.session.userId,
+        rocks,
+        regularRocks,
+        coProducts,
+        solidWastes
       });
     } else {
       res.redirect('/login');

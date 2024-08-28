@@ -13,7 +13,7 @@ class ExtractionBenchController {
     const coProducts = await CoProductService.getAll();
     const solidWastes = await SolidWasteService.getAll();
 
-    res.render('extraction_bench', {
+    res.render('index', {
       userName,
       rocks,
       regularRocks,
