@@ -5,7 +5,7 @@ interface SolidWasteAttributes {
   id: number;
   type: string;
   total_quantity: number;
-  disposition: string;
+  disposal: string;
 }
 
 interface SolidWasteCreationAttributes extends Optional<SolidWasteAttributes, 'id'> {}
@@ -14,7 +14,7 @@ class SolidWaste extends Model<SolidWasteAttributes, SolidWasteCreationAttribute
   public id!: number;
   public type!: string;
   public total_quantity!: number;
-  public disposition!: string;
+  public disposal!: string;
 }
 
 SolidWaste.init({
@@ -31,7 +31,7 @@ SolidWaste.init({
     type: DataTypes.FLOAT,
     allowNull: false,
   },
-  disposition: {
+  disposal: {
     type: DataTypes.STRING,
     allowNull: false,
   },

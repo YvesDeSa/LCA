@@ -3,8 +3,8 @@ import SolidWasteService from '../services/solidWasteService';
 
 class SolidWasteController {
   async add(req: Request, res: Response) {
-    const { type, total_quantity, disposition } = req.body;
-    const solidWaste = await SolidWasteService.add({ type, total_quantity, disposition });
+    const { type, total_quantity, disposal } = req.body;
+    const solidWaste = await SolidWasteService.add({ type, total_quantity, disposal });
     res.redirect('/');
   }
 
@@ -25,10 +25,10 @@ class SolidWasteController {
 
   async update(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
-    const { type, total_quantity, disposition } = req.body;
+    const { type, total_quantity, disposal } = req.body;
 
     try {
-      await SolidWasteService.update(Number(id), { type, total_quantity, disposition });
+      await SolidWasteService.update(Number(id), { type, total_quantity, disposal });
       res.redirect('back');
     } catch (error) {
       res.status(500).send(error);

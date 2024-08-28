@@ -1,7 +1,7 @@
 import SolidWaste from '../models/solidWasteModel';
 
 class SolidWasteRepository {
-  async create(data: { type: string; total_quantity: number; disposition: string }) {
+  async create(data: { type: string; total_quantity: number; disposal: string }) {
     return await SolidWaste.create(data);
   }
 
@@ -13,7 +13,7 @@ class SolidWasteRepository {
     return await SolidWaste.findAll();
   }
 
-  async update(id: number, data: Partial<{ type: string; total_quantity: number; disposition: string }>) {
+  async update(id: number, data: Partial<{ type: string; total_quantity: number; disposal: string }>) {
     const solidWaste = await SolidWaste.findByPk(id);
     if (solidWaste) {
       return await solidWaste.update(data);
