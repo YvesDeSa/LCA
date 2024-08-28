@@ -6,6 +6,7 @@ import solidWasteRoutes from './solidWasteRoutes';
 import extractionBenchRoutes from './extractionBenchRoutes';
 import userRoutes from './userRoutes';
 import slurryWasteRoutes from './slurryWasteRoutes';
+import rockExtractionEntryRoutes from './rockExtractionEntryRoutes';
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.use(solidWasteRoutes);
 router.use(extractionBenchRoutes);
 router.use(userRoutes);
 router.use(slurryWasteRoutes)
+router.use(rockExtractionEntryRoutes)
 
 
 export default router;

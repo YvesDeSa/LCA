@@ -37,6 +37,7 @@
             <div class="list-group-item" onclick="showCoProductForm()">CO-PRODUTO</div>
             <div class="list-group-item" onclick="showSolidWasteForm()">RESÍDUO SÓLIDO</div>
             <div class="list-group-item" onclick="showSlurryWasteForm()">RESÍDUOS DE LAMA</div>
+            <div class="list-group-item" onclick="showRockExtractionEntryForm()">ROCK EXTRACTION ENTRIES</div>
           </div>
         </div>
       </div>
@@ -48,6 +49,7 @@
         <%- include('partials/coProduct'); %>
         <%- include('partials/solidWaste'); %>
         <%- include('partials/slurryWaste'); %>
+        <%- include('partials/rockExtractionEntries'); %>
       </div>
     </div>
   </div>
@@ -97,6 +99,10 @@
 
     function showSlurryWasteForm() {
       showForm('section-slurryWaste', '/slurryWaste');
+    }
+
+    function showRockExtractionEntryForm() {
+      showForm('section-rock-extraction-entries', '/rock-extraction-entries');
     }
 
     function editForm(sectionId, data) {
